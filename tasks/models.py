@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.db import models
 # un modelo de usuario creado por django
 from django.contrib.auth.models import User
