@@ -1,0 +1,54 @@
+{% extends 'layout/base.html' %}
+
+{% block body %}
+    <h2 class="text-center"> List of tasks: </h2>
+    <form action="{% url 'create_task' %}">
+        <button class="btn btn-primary"> Create new task </button>
+    </form>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <select class="custom-select" id="filter_option" name="filter_option">
+              <option value="1" selected> All </option>
+              <option value="2"> Importants </option>
+              <option value="3"> Not importants </option>
+              <option value="4"> Completed </option>
+              <option value="5"> Not completed </option>
+            </select>
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary"> Filter </button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <ul class="list-group">
+    {% for task in tasks %}
+        <a class="list-group-item" href="{% url 'detail_task' task.id %}">
+            <h3 class="fw-bold text-center"> {{ task.title }} {% if task.date_completed == null %} 🕐 {% else %} ✅ {% endif %} </h3>
+            <p> Description: {{task.description}} </p>
+            <p> {% if task.important %} This task is important {% endif %} </p>
+
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                    {% if task.date_completed == null %}
+                    <form action="{% url 'done_task' task.id %}">
+                        <button class="btn btn-success"> Done </button>
+                    </form>
+                    {% endif %}
+                </div>
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <form action="{% url 'delete_task' task.id %}">
+                        <button class="btn btn-danger"> Delete </button>
+                    </form>
+                </div>
+                <div class="btn-group" role="group" aria-label="Third group">
+                    <form action="{% url 'edit_task' task.id %}">
+                        <button class="btn btn-primary"> Edit </button>
+                    </form>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    </ul>
+{% endblock %}

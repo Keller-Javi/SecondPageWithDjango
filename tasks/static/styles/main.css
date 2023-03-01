@@ -1,0 +1,60 @@
+html{
+    background-color: azure;
+    margin: auto;
+}
+
+.buttons {
+    background-color: aquamarine;
+    color: black;
+    text-decoration: none;
+    padding: 3px 10px;
+    margin: 2px 10px;
+    border: black solid 1px;
+}
+.buttons:hover {
+    background-color:cyan;
+}
+
+.text{
+    text-align: center;
+    background-color: blanchedalmond;
+    margin: 0;
+}
+.text a {
+    text-decoration: none;
+    color: black;
+}
+.text a:hover {
+    color: chocolate;
+}
+.task{
+    border: black dotted 1px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background-color:darkseagreen;
+    padding: 5px 45px;
+    margin: -10px;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+}
+nav ul li {
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+nav ul li a:hover{
+    text-decoration: none;
+    color: #9000ff;
+}
+
+.error {
+    background-color: red;
+    padding: 5px;
+}

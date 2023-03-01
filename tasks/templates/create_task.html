@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            {% if task == null %}
+                <h1> Create task: </h1>
+            {% else %}
+                <h1> Edit task: {{ task }} </h1>
+            {% endif %}
+
+            {{ error }}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary"> Save </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

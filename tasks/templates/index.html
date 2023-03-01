@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+{% block body %}
+<section class="card card-body">
+    <h1 class="display-1 "> Welcome {% if user.is_authenticated %} {{username}} {% endif %} </h1> <!-- Muestra el nombre del usuario solo si esta registrado -->
+    <br><br>
+    
+    {% if not user.is_authenticated %}
+    <h3 class="text-danger"> You need sign in or sign up to create and manage tasks: </h3>
+    <div class="btn-toolbar d-flex justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a href="{% url  'signin' %}" class="btn btn-primary"> Sign in </a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a href="{% url  'signup' %}" class="btn btn-primary"> Sign up </a>
+        </div>
+    </div>
+    
+    
+    <br> 
+    {% endif %}
+
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolorem iusto ipsam, ipsa dolore id nam. Suscipit voluptatibus accusantium deleniti hic commodi nam eaque labore perferendis aliquam non magni dolorum, vero quae odit ea autem ex id eligendi. Assumenda impedit nemo amet deleniti consequatur sunt modi mollitia, quia beatae facere recusandae iure quibusdam libero ipsum harum. Modi quia, quae provident atque quis mollitia asperiores repellendus laboriosam ratione natus excepturi quam unde cumque repudiandae ipsam deleniti eum ipsum molestiae exercitationem praesentium facere soluta reiciendis sunt. Exercitationem aspernatur quis deleniti illo velit nemo dolores tempore, repellat eaque, reiciendis est pariatur obcaecati nesciunt quas dolorem repellendus dolorum laborum aut culpa officia vero error. Numquam, repellendus? Aliquid quibusdam fugit totam id sit ratione aspernatur! Laboriosam doloribus exercitationem obcaecati consectetur magnam, debitis soluta alias quibusdam quidem et, praesentium nobis amet asperiores excepturi ullam maiores accusantium dolorum eius, placeat hic fugiat laudantium sed necessitatibus eveniet! Dicta quibusdam earum dolore totam similique magnam illo, ex nulla modi excepturi inventore rerum voluptate quam, provident quae facere eveniet debitis. Assumenda harum obcaecati possimus voluptate provident fugit! Inventore cum dolore quo quos maxime dolores labore ullam suscipit harum ipsum consequatur aperiam, veritatis beatae. Eos distinctio accusamus non placeat at porro? </p>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+
+{% block body %}
+    <h1> Details of this task: </h1>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="text-center"> Title: {{ task }} </h2>
+            <p> Description: {{task.description}} </p>
+            <p> 
+                {% if task.important %} 
+                    This task is important 
+                {% else %}
+                    This is't important 
+                {% endif %} 
+            </p>
+            <p> Date created: {{ task.date_created }} </p>
+            <p> 
+                Date completed:
+                {% if task.date_completed == null %}
+                    This task in not completed
+                {% else %}
+                    {{ task.date_completed }}
+                {% endif %} 
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            {% if task.date_completed == null %}
+            <form action="{% url 'done_task' task.id %}">
+                <button class="btn btn-success"> Done </button>
+            </form>
+            {% endif %}
+        </div>
+        <div class="btn-group" role="group" aria-label="Second group">
+            <form action="{% url 'delete_task' task.id %}">
+                <button class="btn btn-danger"> Delete </button>
+            </form>
+        </div>
+        <div class="btn-group" role="group" aria-label="Third group">
+            <form action="{% url 'edit_task' task.id %}">
+                <button class="btn btn-primary"> Edit </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
