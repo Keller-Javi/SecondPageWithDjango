@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 # un modelo de usuario creado por django
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .forms import TaskForm, FilterTask
+from .forms import TaskForm
 from .models import Task
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -71,7 +71,7 @@ def tasks(request):
         elif op == '5':  # Not completed
             tasks = Task.objects.filter(user=request.user, date_completed=None)
 
-    return render(request, 'tasks.html', {'tasks': tasks, 'form': FilterTask})
+    return render(request, 'tasks.html', {'tasks': tasks})
 
 @login_required
 def create_task(request):
