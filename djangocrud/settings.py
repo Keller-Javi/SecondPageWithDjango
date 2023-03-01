@@ -82,10 +82,13 @@ WSGI_APPLICATION = "djangocrud.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-'default': dj_database_url.config(
+DATABASES = {
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
         default='postgresql://postgres:postgres@localhost:5432/mysite',
         conn_max_age=600
     )
+}
 
 
 # Password validation
